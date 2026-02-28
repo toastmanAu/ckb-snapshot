@@ -1,0 +1,18 @@
+# CKB Snapshot Service
+# Wyltek Industries — toastmanAu/ckb-snapshot
+
+[Unit]
+Description=CKB Chain Snapshot Creator
+After=network.target
+
+[Service]
+Type=oneshot
+User=orangepi
+WorkingDirectory=/home/orangepi/ckb-snapshot
+Environment=CKB_DATA_DIR=/home/orangepi/.ckb/data/db
+Environment=SNAPSHOT_DIR=/home/orangepi/snapshots
+Environment=R2_REMOTE=r2:ckb-snapshots
+Environment=UPLOAD=true
+ExecStart=/home/orangepi/ckb-snapshot/snapshot.sh --upload
+StandardOutput=journal
+StandardError=journal

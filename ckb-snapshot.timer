@@ -1,0 +1,14 @@
+# CKB Snapshot Timer — runs weekly on Sunday at 2am
+# Wyltek Industries
+
+[Unit]
+Description=Weekly CKB Chain Snapshot
+Requires=ckb-snapshot.service
+
+[Timer]
+OnCalendar=Sun *-*-* 02:00:00
+RandomizedDelaySec=600
+Persistent=true
+
+[Install]
+WantedBy=timers.target
